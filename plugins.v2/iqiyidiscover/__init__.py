@@ -543,10 +543,11 @@ class IqiyiDiscover(_PluginBase):
 
                 year_val = str(item.get("year") or item.get("publishYear") or "")
 
-                channel_id = str(
-                    item.get("channelId") or item.get("channel_id") or ""
-                )
-                media_type = "电影" if channel_id == "2" else "电视剧"
+                # channel_id = str(
+                #     item.get("channelId") or item.get("channel_id") or ""
+                # )
+                # media_type = "电影" if channel_id == "2" else "电视剧"
+                media_type = "电影" if mtype == "movie" else "电视剧"
 
                 media_id = str(
                     item.get("albumId")
