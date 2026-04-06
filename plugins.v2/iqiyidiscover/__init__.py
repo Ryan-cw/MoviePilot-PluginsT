@@ -456,19 +456,36 @@ class IqiyiDiscover(_PluginBase):
         """
         catg = CHANNEL_PARAMS.get(mtype, {}).get("catg", "1")
 
+        # params: Dict[str, Any] = {
+        #     "ret_num": 24,
+        #     "page_id": page,
+        #     "channel_id": catg,
+        #     "lib_id": "1",
+        #     "mode": "11",
+        # }
+
+        # for k, v in kwargs.items():
+        #     if v is not None:
+        #         params[k] = v
+
+        # url = "https://mesh.if.iqiyi.com/portal/lw/videolib/data"
+
         params: Dict[str, Any] = {
-            "ret_num": 24,
-            "page_id": page,
             "channel_id": catg,
-            "lib_id": "1",
-            "mode": "11",
+            "data_type": 1,
+            "mode": 11,
+            "page_id": page,
+            "ret_num": 24,
+            "version": "10.0",
         }
 
         for k, v in kwargs.items():
             if v is not None:
                 params[k] = v
 
-        url = "https://mesh.if.iqiyi.com/portal/lw/videolib/data"
+        url = "https://pcw-api.iqiyi.com/search/recommend/list"
+
+        
         try:
             resp = requests.get(url, params=params, headers=HEADERS, timeout=10)
             resp.raise_for_status()
