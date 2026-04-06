@@ -547,7 +547,28 @@ class IqiyiDiscover(_PluginBase):
                 #     item.get("channelId") or item.get("channel_id") or ""
                 # )
                 # media_type = "电影" if channel_id == "2" else "电视剧"
-                media_type = "电影" if mtype == "movie" else "电视剧"
+                # media_type = "电影" if mtype == "movie" else "电视剧"
+
+
+                # 1. 抓取爱奇艺 API 返回的真实频道 ID
+                channel_id = str(
+                    item.get("channelId") or item.get("channel_id") or ""
+                )
+                
+                # 2. 建立雷打不动的官方身份字典
+                type_map = {
+                    "1": "电影",
+                    "2": "电视剧",
+                    "3": "纪录片",
+                    "4": "动漫",
+                    "6": "综艺",
+                    "15": "少儿"
+                }
+                
+                # 3. 对号入座，拿不到就默认兜底为"电视剧"
+                media_type = type_map.get(channel_id, "电视剧")
+                
+                
 
                 media_id = str(
                     item.get("albumId")
