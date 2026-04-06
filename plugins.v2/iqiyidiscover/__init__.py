@@ -13,8 +13,8 @@ from app.schemas.types import ChainEventType
 
 # 爱奇艺频道分类  catg 对应爱奇艺频道ID
 CHANNEL_PARAMS = {
-    "tv":          {"catg": "1",  "name": "电视剧"},
-    "movie":       {"catg": "2",  "name": "电影"},
+    "tv":          {"catg": "1",  "name": "电影"},
+    "movie":       {"catg": "2",  "name": "电视剧"},
     "documentary": {"catg": "3",  "name": "纪录片"},
     "anime":       {"catg": "4",  "name": "动漫"},
     "variety":     {"catg": "6",  "name": "综艺"},
