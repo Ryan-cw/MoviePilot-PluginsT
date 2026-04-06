@@ -551,22 +551,36 @@ class IqiyiDiscover(_PluginBase):
 
 
                 # 1. 抓取爱奇艺 API 返回的真实频道 ID
+                # channel_id = str(
+                #     item.get("channelId") or item.get("channel_id") or ""
+                # )
+                
+                # # 2. 建立雷打不动的官方身份字典
+                # type_map = {
+                #     "1": "电影",
+                #     "2": "电视剧",
+                #     "3": "纪录片",
+                #     "4": "动漫",
+                #     "6": "综艺",
+                #     "15": "少儿"
+                # }
+                
+                # # 3. 对号入座，拿不到就默认兜底为"电视剧"
+                # media_type = type_map.get(channel_id, "电视剧")
+
+
+                # 抓取爱奇艺 API 返回的真实频道 ID
                 channel_id = str(
                     item.get("channelId") or item.get("channel_id") or ""
                 )
                 
-                # 2. 建立雷打不动的官方身份字典
-                type_map = {
-                    "1": "电影",
-                    "2": "电视剧",
-                    "3": "纪录片",
-                    "4": "动漫",
-                    "6": "综艺",
-                    "15": "少儿"
-                }
-                
-                # 3. 对号入座，拿不到就默认兜底为"电视剧"
-                media_type = type_map.get(channel_id, "电视剧")
+                # 针对 MoviePilot 的“偏心”设计，精准分配角标：
+                if channel_id == "1":
+                    media_type = "电影"
+                elif channel_id == "4":  # 4 是爱奇艺的动漫频道
+                    media_type = "动漫"
+                else:
+                    media_type = "电视剧" # 综艺、纪录片、少儿等，全部兜底使用电视剧角标
                 
                 
 
