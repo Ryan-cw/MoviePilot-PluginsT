@@ -104,6 +104,18 @@
             "v1.0.0": "发布"
         }
     },
+    "IqiyiDiscover": {
+    "name": "爱奇艺探索",
+    "description": "让探索支持爱奇艺的数据浏览，支持电视剧、电影、综艺、动漫、纪录片、少儿六大分类。",
+    "version": "1.0.0",
+    "v2": true,
+    "icon": "https://raw.githubusercontent.com/Ryan-cw/MoviePilotPlus/main/icons/iqiyi.png",
+    "author": "Ryan-cw",
+    "level": 1,
+    "history": {
+      "v1.0.0": "初始版本，支持爱奇艺六大频道探索及多维度筛选"
+    }
+  },
     "P115StrmHelper": {
         "name": "115网盘STRM助手",
         "description": "115网盘STRM生成一条龙服务",
